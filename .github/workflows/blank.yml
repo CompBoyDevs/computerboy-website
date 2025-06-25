@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Boy Web Dev & Design</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f111a;
+      color: #e6f0f3;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    nav {
+      background-color: #11131f;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 255, 195, 0.1);
+    }
+
+    nav a {
+      color: #00ffc3;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    .logo-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      animation: fadeInUp 1.2s ease-out;
+      padding: 0 1rem;
+      position: relative;
+    }
+
+    .logo-img {
+      max-width: 240px;
+      margin-bottom: 24px;
+      animation: float 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px #00ffc3a4);
+    }
+
+    .corner-hoodie-icon {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 55px;
+      animation: popIn 0.8s ease-out;
+      filter: drop-shadow(0 0 6px #00ffc388);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.15rem;
+      color: #cbd9e1;
+      max-width: 560px;
+      margin-bottom: 32px;
+    }
+
+    .hire-button {
+      padding: 14px 32px;
+      background: linear-gradient(145deg, #00ffc3, #007bff);
+      color: #0f111a;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 14px #00ffc388;
+      transition: all 0.3s ease;
+    }
+
+    .hire-button:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 22px #00ffc3cc;
+    }
+
+    .mouse-cursor {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #00ffcc;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #00ffcc, 0 0 40px #00ffcc50;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s ease, opacity 0.3s;
+      mix-blend-mode: difference;
+    }
+
+    .services-section {
+      padding: 80px 20px;
+      background-color: #11131f;
+      text-align: center;
+    }
+
+    .services-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #00ffc3;
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-box {
+      background-color: #1c1f2b;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 255, 195, 0.1);
+    }
+
+    .service-box h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .service-box p {
+      font-size: 0.95rem;
+      color: #cbd9e1;
+    }
+
+    .contact-section {
+      padding: 60px 20px;
+      background-color: #0f111a;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-size: 2rem;
+      color: #00ffc3;
+      margin-bottom: 20px;
+    }
+
+    .contact-section p {
+      color: #cbd9e1;
+      margin-bottom: 10px;
+    }
+
+    .social-icons {
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      color: #00ffc3;
+      margin: 0 10px;
+      font-size: 1.8rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ffffff;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #00ffc3;
+      color: #0f111a;
+      padding: 12px 16px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffc3aa;
+      border: none;
+      display: none;
+    }
+
+    .back-to-top.show {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .logo-img {
+        max-width: 180px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1rem;
+        padding: 0 1rem;
+      }
+
+      .hire-button {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+      }
+
+      .corner-hoodie-icon {
+        width: 45px;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="#top">Home</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <a id="top"></a>
+  <img src="hoodie-icon.png" alt="Hoodie Icon" class="corner-hoodie-icon" />
+
+  <div class="logo-page">
+    <img src="main-logo.png" alt="Computer Boy Logo" class="logo-img" />
+    <h1>Welcome to Computer Boy Web Dev & Design</h1>
+    <p>Custom-coded websites, clean responsive layouts, and dark cyber-inspired aesthetics. Bringing ideas to life with creative front-end finesse.</p>
+    <button class="hire-button" onclick="window.location.href='mailto:computerboy@example.com'">Hire Me</button>
+  </div>
+
+  <section id="services" class="services-section">
+    <h2>Services</h2>
+    <div class="services-list">
+      <div class="service-box">
+        <h3>One-Page Site – $150+</h3>
+        <p>Landing page, contact form, responsive layout. Perfect for portfolios and small businesses.</p>
+      </div>
+      <div class="service-box">
+        <h3>Standard 5-Page Website – $300–$500</h3>
+        <p>Home, About, Services, Gallery, Contact. Responsive & optimized with optional forms.</p>
+      </div>
+      <div class="service-box">
+        <h3>Business Website w/ Booking or Cart – $600–$1,000</h3>
+        <p>eCommerce or service booking with mobile-first design and social integration.</p>
+      </div>
+      <div class="service-box">
+        <h3>Website UI/UX Mockup – $100+</h3>
+        <p>Figma, Adobe XD or developer handoff. Great for planning site layouts.</p>
+      </div>
+      <div class="service-box">
+        <h3>Logo Design – $50–$150</h3>
+        <p>Scalable vector logos for web, merch, and social. Includes color and B&W versions.</p>
+      </div>
+      <div class="service-box">
+        <h3>Add-On Services</h3>
+        <p>Mobile Optimization (+$50), SEO Setup (+$75), Hosting Help (+$30), and Fixes ($25–$50/hr).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:computerboy@example.com" style="color:#00ffc3;">computerboy@example.com</a></p>
+    <div class="social-icons">
+      <a href="https://instagram.com/computerboywebdev" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </section>
+
+  <button class="back-to-top" id="backToTop">↑</button>
+  <div class="mouse-cursor" id="cursor"></div>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = `${e.pageX}px`;
+      cursor.style.top = `${e.pageY}px`;
+      cursor.style.transform = 'scale(1.4)';
+      clearTimeout(cursor.resetTimeout);
+      cursor.resetTimeout = setTimeout(() => {
+        cursor.style.transform = 'scale(1)';
+      }, 80);
+    });
+
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+
+</html>
